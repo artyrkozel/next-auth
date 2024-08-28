@@ -11,7 +11,7 @@ const Watches = ({ userId }: { userId: String }) => {
   return (
     <div>
       {data?.map((el) => (
-        <div>{el.brand}</div>
+        <div key={el.id}>{el.brand}</div>
       ))}
     </div>
   );
