@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "@next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "./components/ReactQueryClientProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["200", "400", "500", "700", "800"],
+  display: "swap",
+  variable: '--font-manrope'
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +23,7 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={manrope.className}>{children}</body>
       </html>
     </ReactQueryClientProvider>
   );

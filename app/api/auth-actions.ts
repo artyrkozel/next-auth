@@ -1,6 +1,5 @@
 'use server'
 
-
 import useSupabaseServer from '@/utils/supabase-server'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers';
@@ -22,7 +21,7 @@ export async function Login(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/watches')
+  redirect('/')
 }
 
 export async function Signup(formData: FormData) {

@@ -8,11 +8,29 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // backgroundImage: {
-      //   "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      //   "gradient-conic":
-      //     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      // },
+      fontFamily: {
+        sans: ['var(--font-manrope)'],
+      },
+      backgroundImage: {
+        "login-bg": "url('/login-bg.jpg')"
+      },
+      colors(theme){
+        return {
+          primary: {
+            DEFAULT: '#E0F64B'
+          },
+          secondary: {
+            DEFAULT: '#171717'
+          },
+          'grey': {
+            light: '#F7F7F7',
+            DEFAULT: '#B8B8B8',
+            dark: '#B8B8B8',
+          },
+          'green': '#1ABC7B',
+          'red': '#F13005'
+        }
+      }
     },
   },
   plugins: [],
