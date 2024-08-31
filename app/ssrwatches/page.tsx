@@ -13,7 +13,9 @@ export default async function WatchesPage() {
   const queryClient = new QueryClient();
   const coolieStore = cookies();
   const client = useSupabaseServer(coolieStore);
-  const { data: {user} } = await client.auth.getUser();
+  const {
+    data: { user },
+  } = await client.auth.getUser();
 
   await queryClient.prefetchQuery(
     useGetWatches({ userId: String(user?.id), client })
