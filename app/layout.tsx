@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Manrope } from "@next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "./components/ReactQueryClientProvider";
+import { Theme } from "@/providers/ThemeProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["200", "400", "500", "700", "800"],
   display: "swap",
-  variable: '--font-manrope'
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -22,8 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <ReactQueryClientProvider>
-      <html lang="en">
-        <body className={manrope.className}>{children}</body>
+      <html lang="en" suppressContentEditableWarning>
+        <body className={manrope.className}>
+          <Theme>{children}</Theme>
+        </body>
       </html>
     </ReactQueryClientProvider>
   );
