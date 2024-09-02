@@ -40,7 +40,7 @@ const Button: FC<IButtonProps> = ({
 export default Button;
 
 const buttonVariants = cva(
-  "text-[14px] pointer py-[10px] px-6 font-semibold rounded-xl transition ease-in-out delay-30 capitalize ",
+  "w-full text-[14px] pointer py-[10px] px-6 font-semibold rounded-xl transition ease-in-out delay-30 capitalize",
   {
     variants: {
       variant: {
