@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope } from "@next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "./components/ReactQueryClientProvider";
 import { Theme } from "@/providers/ThemeProvider";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -25,7 +26,12 @@ export default function RootLayout({
     <ReactQueryClientProvider>
       <html lang="en" suppressContentEditableWarning>
         <body className={manrope.className}>
-          <Theme>{children}</Theme>
+          <Theme>
+            <div className="flex">
+              <Sidebar />
+              {children}
+            </div>
+          </Theme>
         </body>
       </html>
     </ReactQueryClientProvider>

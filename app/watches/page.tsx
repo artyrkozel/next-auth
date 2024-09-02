@@ -3,7 +3,6 @@ import useGetWatches from "@/hooks/useGetWatches";
 import useSupabase from "@/hooks/useSupabase";
 import useUser from "@/hooks/useUser";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 
 export default function WatchesPage() {
   const { user } = useUser();
@@ -13,7 +12,7 @@ export default function WatchesPage() {
   );
 
   return (
-    <div>
+    <div className="bg-slate-500">
       {watchkst &&
         watchkst.length &&
         watchkst.map((el) => (
