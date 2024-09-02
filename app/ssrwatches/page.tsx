@@ -1,5 +1,4 @@
 import useGetWatches from "@/hooks/useGetWatches";
-import useUser from "@/hooks/useUser";
 import useSupabaseServer from "@/utils/supabase-server";
 import {
   dehydrate,
@@ -8,6 +7,7 @@ import {
 } from "@tanstack/react-query";
 import { cookies } from "next/headers";
 import Watches from "./watches";
+import { Page } from "../components/Page/Page";
 
 export default async function WatchesPage() {
   const queryClient = new QueryClient();
@@ -23,7 +23,9 @@ export default async function WatchesPage() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Watches userId={String(user?.id)} />
+      <Page>
+        <Watches userId={String(user?.id)} />
+      </Page>
     </HydrationBoundary>
   );
 }
