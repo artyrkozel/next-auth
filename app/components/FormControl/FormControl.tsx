@@ -32,7 +32,7 @@ export const FormControl: FC<IFormControl> = ({
       )}
       {children}
       {errorMessage && (
-        <span className="relative block px-2 text-red-500 min-h-5 text-left top-2 left-1 text-xs">
+        <span className="relative block px-2 text-red-500 min-h-5 text-left text-red top-2 left-1 text-xs">
           {errorMessage}
         </span>
       )}
