@@ -53,6 +53,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     return null;
   }
 
+  const handleLogout = async () => {
+    await Logout();
+  };
+
   return (
     <aside
       data-testid="sidebar"
@@ -75,9 +79,9 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         >
           {collapsed ? ">" : "<"}
         </Button>
-        <form action={Logout} className="w-full">
-          <Button type="submit">Logout</Button>
-        </form>
+        <Button onClick={handleLogout} type="submit">
+          Logout
+        </Button>
       </div>
     </aside>
   );

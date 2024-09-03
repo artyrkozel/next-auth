@@ -17,7 +17,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-lvh w-1vh grid grid-cols-2 grid-rows-1">
+    <div className="h-lvh w-full grid grid-cols-2 grid-rows-1">
       <div className="flex items-center justify-center bg-slate-400 bg-login-bg">
         <div className="max-w-96">
           <Image
