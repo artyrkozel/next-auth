@@ -22,6 +22,7 @@ const config: Config = {
           secondary: {
             DEFAULT: '#171717'
           },
+          'bg-page': '#FAFAFA',
           'grey': {
             light: '#F7F7F7',
             DEFAULT: '#B8B8B8',
