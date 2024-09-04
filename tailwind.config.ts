@@ -25,6 +25,7 @@ const config: Config = {
           'bg-page': '#FAFAFA',
           'grey': {
             light: '#F7F7F7',
+            medium: '#EBEBEB',
             DEFAULT: '#B8B8B8',
             dark: '#B8B8B8',
           },
