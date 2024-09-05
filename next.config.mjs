@@ -10,6 +10,9 @@ const nextConfig = {
     
         return config
     },
+    image: {
+      domains: ["https://main--auth-test111.netlify.app/'"],
+  },
 };
 
 export default nextConfig;
