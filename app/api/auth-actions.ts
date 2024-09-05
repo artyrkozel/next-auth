@@ -4,17 +4,13 @@ import useSupabaseServer from '@/utils/supabase-server'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation'
+import { TLogin } from '../login/page';
 
-export async function Login(formData: FormData) {
-    const coolieStore = cookies();
+export async function Login(formData: TLogin) {
+  const coolieStore = cookies();
   const supabase = useSupabaseServer(coolieStore)
 
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  }
-
-  const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword(formData)
 
   if (error) {
     redirect('/error')

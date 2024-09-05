@@ -20,19 +20,21 @@ export interface IButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   className?: string;
+  isLoading?: boolean;
 }
 
 const Button: FC<IButtonProps> = ({
   className,
   children,
   variant = "primary",
+  isLoading,
   ...rest
 }) => {
   const { pending } = useFormStatus();
 
   return (
     <button className={cn(buttonVariants({ variant, className }))} {...rest}>
-      {pending ? "loading..." : children}
+      {isLoading ? "loading..." : children}
     </button>
   );
 };

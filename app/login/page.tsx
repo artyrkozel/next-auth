@@ -1,23 +1,38 @@
 "use client";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { ControllerInput } from "../components/ControllerInput/ControllerInput";
 import Button from "../components/Button/Button";
 import { Text, TextSize } from "../components/Text/Text";
 import { Login, Signup } from "../api/auth-actions";
-import { useFormStatus } from "react-dom";
+import { useMutation } from "@tanstack/react-query";
+
+const UserSchema = z.object({
+  password: z.string().min(1, { message: "Name is required" }),
+  email: z.string().email(),
+});
+
+export type TLogin = z.infer<typeof UserSchema>;
 
 export default function LoginPage() {
-  const methods = useForm();
-  const { pending } = useFormStatus();
+  const { mutateAsync: login, isPending } = useMutation({
+    mutationFn: Login,
+    onError: (error) => {
+      return alert(error.message || "Failed to login");
+    },
+  });
 
-  const handleSubmit: SubmitHandler<any> = async (data) => {
-    const res = await Login(data);
-    console.log(res);
-  };
+  const form = useForm<TLogin>({
+    resolver: zodResolver(UserSchema),
+    mode: "onChange",
+  });
+
+  const handleSubmit: SubmitHandler<TLogin> = async (data) => await login(data);
 
   return (
-    <div className="h-lvh w-1vh grid grid-cols-2 grid-rows-1">
+    <div className="h-lvh w-full grid grid-cols-2 grid-rows-1">
       <div className="flex items-center justify-center bg-slate-400 bg-login-bg">
         <div className="max-w-96">
           <Image
@@ -46,8 +61,8 @@ export default function LoginPage() {
             title="Create Personal Account"
             size={TextSize.M}
           />
-          <FormProvider {...methods}>
-            <form action={Login}>
+          <FormProvider {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)}>
               <ControllerInput
                 className="mb-6"
                 name="email"
@@ -66,7 +81,11 @@ export default function LoginPage() {
                 placeholder="Enter your password"
                 max={19}
               />
-              <Button formAction={Login} className="w-full mb-2">
+              <Button
+                type="submit"
+                className="w-full mb-2"
+                isLoading={isPending}
+              >
                 Log in
               </Button>
               <Button
