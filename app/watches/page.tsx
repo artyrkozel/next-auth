@@ -5,6 +5,7 @@ import useSupabase from "@/hooks/useSupabase";
 import useUser from "@/hooks/useUser";
 import { useQuery } from "@tanstack/react-query";
 import { Page } from "../components/Page/Page";
+import useGetTopCoins from "@/hooks/useGetTopCoins";
 
 export default function WatchesPage() {
   const { user } = useUser();
@@ -12,6 +13,8 @@ export default function WatchesPage() {
   const { data: watchkst } = useQuery(
     useGetWatches({ userId: String(user?.id), client })
   );
+
+  const { data: topCoins } = useQuery(useGetTopCoins());
 
   return (
     <Page>

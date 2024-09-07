@@ -8,6 +8,7 @@ import {
 import { cookies } from "next/headers";
 import Watches from "./watches";
 import { Page } from "../components/Page/Page";
+import useGetTopCoins from "@/hooks/useGetTopCoins";
 
 export default async function WatchesPage() {
   const queryClient = new QueryClient();
@@ -16,10 +17,12 @@ export default async function WatchesPage() {
   const {
     data: { user },
   } = await client.auth.getUser();
-
+  
   await queryClient.prefetchQuery(
     useGetWatches({ userId: String(user?.id), client })
   );
+
+  await queryClient.prefetchQuery(useGetTopCoins());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
