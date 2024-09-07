@@ -6,7 +6,7 @@ import { IOptions } from "@/types/types";
 import { ControlWrapperForm } from "./components/ControlWrapperForm/ControlWrapperForm";
 import { FormProvider, useForm } from "react-hook-form";
 import { VscClose } from "react-icons/vsc";
-import { Card, CardTheme } from "./components/Card/Card";
+import { CardTheme } from "./components/Card/Card";
 import { ContentWrapper } from "./components/ContentWrapper/ContentWrapper";
 
 export default function Home() {

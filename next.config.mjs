@@ -11,7 +11,12 @@ const nextConfig = {
         return config
     },
     images: {
-      domains: ["https://main--auth-test111.netlify.app"],
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "**",
+        },
+      ],
   },
 };
 
