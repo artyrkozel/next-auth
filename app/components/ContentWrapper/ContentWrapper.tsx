@@ -35,7 +35,12 @@ export const ContentWrapper: FC<IContentWrapperProps> = memo(
         )}
       >
         <div className="flex justify-between items-center">
-          {title && <Text className="mb-4 ml-2 text-secondary font-semibold text-xl" title={title} />}
+          {title && (
+            <Text
+              className="mb-4 ml-2 text-secondary font-semibold text-xl"
+              title={title}
+            />
+          )}
           {onClick && <Button onClick={onClick}>{textButton}</Button>}
         </div>
         <Card theme={theme} overflowY={overflow}>

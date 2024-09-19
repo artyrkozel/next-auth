@@ -9,6 +9,8 @@ import { cookies } from "next/headers";
 import Watches from "./watches";
 import { Page } from "../components/Page/Page";
 import useGetTopCoins from "@/hooks/useGetTopCoins";
+import { useGetNftList } from "@/hooks/useGetNftList";
+import { getNftList } from "@/queries/nft";
 
 export default async function WatchesPage() {
   const queryClient = new QueryClient();
@@ -17,12 +19,17 @@ export default async function WatchesPage() {
   const {
     data: { user },
   } = await client.auth.getUser();
-  
+
   await queryClient.prefetchQuery(
     useGetWatches({ userId: String(user?.id), client })
   );
 
-  await queryClient.prefetchQuery(useGetTopCoins());
+  await queryClient.prefetchQuery({
+    queryKey: ["nft-list"],
+    queryFn: () => getNftList(client),
+  });
+
+  // await queryClient.prefetchQuery(useGetTopCoins());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
