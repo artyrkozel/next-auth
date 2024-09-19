@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetNftList } from "@/hooks/useGetNftList";
 import useGetTopCoins from "@/hooks/useGetTopCoins";
 import useGetWatches from "@/hooks/useGetWatches";
 import useSupabase from "@/hooks/useSupabase";
@@ -9,8 +10,9 @@ const Watches = ({ userId }: { userId: String }) => {
   const client = useSupabase();
 
   const { data } = useQuery(useGetWatches({ userId: String(userId), client }));
-  const { data: topCoins } = useQuery(useGetTopCoins());
-  
+  const { data: nftList } = useGetNftList();
+  // const { data: topCoins } = useQuery(useGetTopCoins());
+  console.log("nftList", nftList);
   return (
     <div>
       {data?.map((el) => (

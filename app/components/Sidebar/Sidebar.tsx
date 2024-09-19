@@ -31,6 +31,11 @@ const sidebarItemsList: SidebarItemType[] = [
     text: "Actions",
     Icon: menuIconsMap.Market,
   },
+  {
+    path: "/nft",
+    text: "NFT",
+    Icon: menuIconsMap.Market,
+  },
 ];
 
 export const Sidebar = memo(({ className }: SidebarProps) => {

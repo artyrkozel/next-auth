@@ -9,6 +9,54 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      nft: {
+        Row: {
+          category: string[]
+          created_at: string
+          discription: string
+          id: string
+          likes: number | null
+          preview_image: string | null
+          price: number
+          product_name: string
+          properties: string
+          royality: string | null
+          size: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          category: string[]
+          created_at?: string
+          discription: string
+          id?: string
+          likes?: number | null
+          preview_image?: string | null
+          price: number
+          product_name: string
+          properties: string
+          royality?: string | null
+          size: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          category?: string[]
+          created_at?: string
+          discription?: string
+          id?: string
+          likes?: number | null
+          preview_image?: string | null
+          price?: number
+          product_name?: string
+          properties?: string
+          royality?: string | null
+          size?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       watches: {
         Row: {
           brand: string | null

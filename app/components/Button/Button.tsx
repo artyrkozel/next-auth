@@ -30,7 +30,6 @@ const Button: FC<IButtonProps> = ({
   isLoading,
   ...rest
 }) => {
-  const { pending } = useFormStatus();
 
   return (
     <button className={cn(buttonVariants({ variant, className }))} {...rest}>
